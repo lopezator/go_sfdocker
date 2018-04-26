@@ -1,0 +1,35 @@
+version: "3.1"
+
+services:
+  ubuntu:
+    image: ubuntu:latest
+    container_name: sfdocker_ubuntu
+    working_dir: /application
+    volumes:
+      - .:/application
+    entrypoint: tail -f /dev/null
+
+  debian:
+    image: debian:latest
+    container_name: sfdocker_debian
+    working_dir: /application
+    volumes:
+      - .:/application
+    entrypoint: tail -f /dev/null
+
+  centos:
+    image: centos:latest
+    container_name: sfdocker_centos
+    working_dir: /application
+    volumes:
+      - .:/application
+    entrypoint: tail -f /dev/null
+
+  fedora:
+    image: fedora:latest
+    container_name: sfdocker_fedora
+    working_dir: /application
+    volumes:
+      - .:/application
+    entrypoint: tail -f /dev/null
+
