@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
 source ./os.bash
+source ./clear.bash
 
-detect_os
+OS=$(detect_os)
+clear_inst ${OS}

@@ -7,18 +7,22 @@ function detect_distro() {
 function detect_os() {
     case "$OSTYPE" in
       solaris*)
-        echo "SOLARIS"
+        OS="SOLARIS"
+        echo "OS not supported"
         exit 1;;
       darwin*)
-        echo "OSX"
+        OS="OSX"
+        echo "OS not supported"
         exit 1;;
       linux*)
-        detect_distro;;
+        echo $(detect_distro);;
       bsd*)
-        echo "BSD"
+        OS="BSD"
+        echo "OS not supported"
         exit 1;;
       *)
-        echo "unknown: $OSTYPE"
+        OS="unknown: $OSTYPE"
+        echo "OS not supported"
         exit 1;;
     esac
 }
