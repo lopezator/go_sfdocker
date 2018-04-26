@@ -3,7 +3,7 @@
 prepare_inst() {
     case $1 in
       debian|ubuntu*)
-        sudo apt-get remove docker docker-engine docker.io
+        sudo apt-get remove -y docker docker-engine docker.io docker-ce
         sudo apt-get update
         sudo apt-get install -y curl;;
       *)
