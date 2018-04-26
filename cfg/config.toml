@@ -1,0 +1,6 @@
+[sfdocker]
+default_user = 1000
+default_container = "php-fpm"
+
+[symfony]
+version = nil
