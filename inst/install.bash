@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-SUPPORTED_DISTROS="debian|ubuntu|fedora|centos"
+shopt -s extglob
+SUPPORTED_DISTROS="@(debian|ubuntu|fedora|centos)"
 
 function detect_distro() {
     cat /etc/*-release | grep -o '^ID=[^,]*' | awk -F'[=&]' '{print $2}'
@@ -38,13 +39,13 @@ function install_docker() {
         sudo sh /tmp/get-docker.sh
         sudo usermod -aG docker $(whoami);;
     *)
-        echo "unknown: $OSTYPE"
+        echo "unknown: $OS"
         exit 1;;
     esac
 }
 
 function get_latest_compose_version() {
-    curl https://api.github.com/repos/docker/compose/releases/latest -s | grep "tag_name" | awk -F'[:&]' '{print $2}' | tr -d \",
+    curl https://api.github.com/repos/docker/compose/releases/latest -s | grep "tag_name" | awk -F'[:&]' '{print $2}' | tr -d \", | xargs
 }
 
 function install_docker_compose() {
