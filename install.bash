@@ -58,9 +58,22 @@ function install_docker_compose() {
     esac
 }
 
+function install_golang_runtime_env() {
+    docker build -t go_sfdocker .
+}
+
+function install_sfdocker_exec() {
+    SFDOCKER_EXEC_PATH=/usr/local/bin/go_sfdocker
+    rm -rf ${SFDOCKER_EXEC_PATH}
+    echo "docker run -it --rm --name go_sfdocker go_sfdocker" > ${SFDOCKER_EXEC_PATH}
+    chmod +x ${SFDOCKER_EXEC_PATH}
+}
+
 detect_os $OSTYPE
 prepare_inst ${OS}
 install_docker ${OS}
 install_docker_compose ${OS}
+install_golang_runtime_env
+install_sfdocker_exec
 
 

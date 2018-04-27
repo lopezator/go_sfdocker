@@ -6,7 +6,7 @@ services:
     container_name: sfdocker_ubuntu
     working_dir: /application
     volumes:
-      - .:/application
+      - .:/go/src/github.com/lopezator/go_sfdocker
     entrypoint: tail -f /dev/null
 
   debian:
